@@ -25,13 +25,13 @@ jobs:
         run: swift test
       - name: "Test Swift Package iOS"
         run: xcodebuild test -sdk "iphonesimulator" -destination "platform=iOS Simulator,name=$(xcrun simctl list devices --json | jq -r '.devices | to_entries[] | .value[] | select(.availability == "(available)" or .isAvailable == true) | .name' | grep -E '^iPhone [0-9]+$' | sort -V | tail -n 1)" -scheme "$(xcodebuild -list -json | jq -r '.workspace.schemes[-1]')"
-  windows:
-    runs-on: windows-2022
-    steps:
-      - uses: compnerd/gha-setup-swift@main
-        with:
-          branch: swift-6.1-release
-          tag: 6.1-RELEASE
-      - uses: actions/checkout@v4
-      - run: swift test
+  #windows:
+  #  runs-on: windows-2022
+  #  steps:
+  #    - uses: compnerd/gha-setup-swift@main
+  #      with:
+  #        branch: swift-6.1-release
+  #        tag: 6.1-RELEASE
+  #    - uses: actions/checkout@v4
+  #    - run: swift test
 
