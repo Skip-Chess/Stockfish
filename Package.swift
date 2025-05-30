@@ -15,7 +15,7 @@ let package = Package(
                 .define("NNUE_EMBEDDING_OFF"),
                 .define("INCBIN_SILENCE_BITCODE_WARNING"),
             ],
-            linkerSettings: [.linkedLibrary("m", .when(platforms: [.android]))],
+            linkerSettings: [.linkedLibrary("m", .when(platforms: [.android]))]
         ),
         .target(
             name: "Stockfish",
