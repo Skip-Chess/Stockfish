@@ -1,7 +1,7 @@
 import Testing
 import Stockfish
 
-
+@available(macOS 14, iOS 15, *)
 @Test func testStockfish() async throws {
     let stream = StockfishEngine.start()
     var iterator = stream.makeAsyncIterator()
