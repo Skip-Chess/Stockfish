@@ -1,4 +1,4 @@
-private import CStockfish
+import CStockfish
 
 @available(iOS 13.0, macOS 14.0, *)
 public struct StockfishEngine {
