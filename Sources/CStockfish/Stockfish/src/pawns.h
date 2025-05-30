@@ -18,6 +18,7 @@
 
 #ifndef PAWNS_H_INCLUDED
 #define PAWNS_H_INCLUDED
+#if __cplusplus
 
 #include "misc.h"
 #include "position.h"
@@ -67,4 +68,5 @@ Entry* probe(const Position& pos);
 
 } // namespace Stockfish::Pawns
 
+#endif
 #endif // #ifndef PAWNS_H_INCLUDED

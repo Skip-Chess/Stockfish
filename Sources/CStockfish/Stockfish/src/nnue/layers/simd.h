@@ -18,6 +18,7 @@
 
 #ifndef STOCKFISH_SIMD_H_INCLUDED
 #define STOCKFISH_SIMD_H_INCLUDED
+#if __cplusplus
 
 #if defined(USE_AVX2)
 # include <immintrin.h>
@@ -400,4 +401,5 @@ namespace Stockfish::Simd {
 
 }
 
+#endif
 #endif // STOCKFISH_SIMD_H_INCLUDED

@@ -18,6 +18,7 @@
 
 #ifndef POSITION_H_INCLUDED
 #define POSITION_H_INCLUDED
+#if __cplusplus
 
 #include <cassert>
 #include <deque>
@@ -447,4 +448,5 @@ inline StateInfo* Position::state() const {
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef POSITION_H_INCLUDED

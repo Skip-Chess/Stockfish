@@ -18,6 +18,7 @@
 
 #ifndef BITBOARD_H_INCLUDED
 #define BITBOARD_H_INCLUDED
+#if __cplusplus
 
 #include <string>
 
@@ -447,4 +448,5 @@ inline Square frontmost_sq(Color c, Bitboard b) {
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef BITBOARD_H_INCLUDED

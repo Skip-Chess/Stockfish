@@ -18,6 +18,7 @@
 
 #ifndef TIMEMAN_H_INCLUDED
 #define TIMEMAN_H_INCLUDED
+#if __cplusplus
 
 #include "misc.h"
 #include "search.h"
@@ -48,4 +49,5 @@ extern TimeManagement Time;
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef TIMEMAN_H_INCLUDED

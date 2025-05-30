@@ -18,6 +18,7 @@
 
 #ifndef TUNE_H_INCLUDED
 #define TUNE_H_INCLUDED
+#if __cplusplus
 
 #include <memory>
 #include <string>
@@ -160,4 +161,5 @@ public:
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef TUNE_H_INCLUDED

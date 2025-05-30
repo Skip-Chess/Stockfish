@@ -18,6 +18,7 @@
 
 #ifndef TT_H_INCLUDED
 #define TT_H_INCLUDED
+#if __cplusplus
 
 #include "misc.h"
 #include "types.h"
@@ -104,4 +105,5 @@ extern TranspositionTable TT;
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef TT_H_INCLUDED

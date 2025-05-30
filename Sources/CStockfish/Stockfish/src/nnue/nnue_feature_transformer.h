@@ -20,6 +20,7 @@
 
 #ifndef NNUE_FEATURE_TRANSFORMER_H_INCLUDED
 #define NNUE_FEATURE_TRANSFORMER_H_INCLUDED
+#if __cplusplus
 
 #include "nnue_common.h"
 #include "nnue_architecture.h"
@@ -671,4 +672,5 @@ namespace Stockfish::Eval::NNUE {
 
 }  // namespace Stockfish::Eval::NNUE
 
+#endif
 #endif // #ifndef NNUE_FEATURE_TRANSFORMER_H_INCLUDED

@@ -18,6 +18,7 @@
 
 #ifndef EVALUATE_H_INCLUDED
 #define EVALUATE_H_INCLUDED
+#if __cplusplus
 
 #include <string>
 #include <optional>
@@ -52,4 +53,5 @@ namespace Eval {
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef EVALUATE_H_INCLUDED

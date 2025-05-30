@@ -20,6 +20,7 @@
 
 #ifndef NNUE_FEATURES_HALF_KA_V2_HM_H_INCLUDED
 #define NNUE_FEATURES_HALF_KA_V2_HM_H_INCLUDED
+#if __cplusplus
 
 #include "../nnue_common.h"
 
@@ -149,4 +150,5 @@ namespace Stockfish::Eval::NNUE::Features {
 
 }  // namespace Stockfish::Eval::NNUE::Features
 
+#endif
 #endif // #ifndef NNUE_FEATURES_HALF_KA_V2_HM_H_INCLUDED

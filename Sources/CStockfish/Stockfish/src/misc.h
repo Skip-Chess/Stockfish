@@ -18,6 +18,7 @@
 
 #ifndef MISC_H_INCLUDED
 #define MISC_H_INCLUDED
+#if __cplusplus
 
 #include <cassert>
 #include <chrono>
@@ -175,4 +176,5 @@ namespace CommandLine {
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef MISC_H_INCLUDED

@@ -18,6 +18,7 @@
 
 #ifndef UCI_H_INCLUDED
 #define UCI_H_INCLUDED
+#if __cplusplus
 
 #include <map>
 #include <string>
@@ -89,4 +90,5 @@ extern UCI::OptionsMap Options;
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef UCI_H_INCLUDED

@@ -18,6 +18,7 @@
 
 #ifndef THREAD_H_INCLUDED
 #define THREAD_H_INCLUDED
+#if __cplusplus
 
 #include <atomic>
 #include <condition_variable>
@@ -138,4 +139,5 @@ extern ThreadPool Threads;
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef THREAD_H_INCLUDED

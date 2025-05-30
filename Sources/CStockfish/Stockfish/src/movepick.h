@@ -18,6 +18,7 @@
 
 #ifndef MOVEPICK_H_INCLUDED
 #define MOVEPICK_H_INCLUDED
+#if __cplusplus
 
 #include <array>
 #include <limits>
@@ -152,4 +153,5 @@ private:
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef MOVEPICK_H_INCLUDED

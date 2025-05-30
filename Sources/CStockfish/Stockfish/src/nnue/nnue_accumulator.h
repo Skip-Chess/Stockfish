@@ -20,6 +20,7 @@
 
 #ifndef NNUE_ACCUMULATOR_H_INCLUDED
 #define NNUE_ACCUMULATOR_H_INCLUDED
+#if __cplusplus
 
 #include "nnue_architecture.h"
 
@@ -34,4 +35,5 @@ namespace Stockfish::Eval::NNUE {
 
 }  // namespace Stockfish::Eval::NNUE
 
+#endif
 #endif // NNUE_ACCUMULATOR_H_INCLUDED

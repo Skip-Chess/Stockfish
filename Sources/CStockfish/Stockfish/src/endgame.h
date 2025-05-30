@@ -18,6 +18,7 @@
 
 #ifndef ENDGAME_H_INCLUDED
 #define ENDGAME_H_INCLUDED
+#if __cplusplus
 
 #include <memory>
 #include <string>
@@ -123,4 +124,5 @@ namespace Endgames {
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef ENDGAME_H_INCLUDED

@@ -18,6 +18,7 @@
 
 #ifndef MATERIAL_H_INCLUDED
 #define MATERIAL_H_INCLUDED
+#if __cplusplus
 
 #include "endgame.h"
 #include "misc.h"
@@ -68,4 +69,5 @@ Entry* probe(const Position& pos);
 
 } // namespace Stockfish::Material
 
+#endif
 #endif // #ifndef MATERIAL_H_INCLUDED

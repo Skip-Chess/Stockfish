@@ -19,13 +19,11 @@ let package = Package(
         ),
         .target(
             name: "Stockfish",
-            dependencies: ["CStockfish"],
-            swiftSettings: [.interoperabilityMode(.Cxx)]
+            dependencies: ["CStockfish"]
         ),
         .testTarget(
             name: "StockfishTests",
-            dependencies: ["Stockfish"],
-            swiftSettings: [.interoperabilityMode(.Cxx)]
+            dependencies: ["Stockfish"]
         )
     ],
     cxxLanguageStandard: .cxx17

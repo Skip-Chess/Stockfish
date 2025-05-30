@@ -20,6 +20,7 @@
 
 #ifndef NNUE_LAYERS_CLIPPED_RELU_H_INCLUDED
 #define NNUE_LAYERS_CLIPPED_RELU_H_INCLUDED
+#if __cplusplus
 
 #include "../nnue_common.h"
 
@@ -177,4 +178,5 @@ namespace Stockfish::Eval::NNUE::Layers {
 
 }  // namespace Stockfish::Eval::NNUE::Layers
 
+#endif
 #endif // NNUE_LAYERS_CLIPPED_RELU_H_INCLUDED

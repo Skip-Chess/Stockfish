@@ -18,6 +18,7 @@
 
 #ifndef SEARCH_H_INCLUDED
 #define SEARCH_H_INCLUDED
+#if __cplusplus
 
 #include <vector>
 
@@ -113,4 +114,5 @@ void clear();
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef SEARCH_H_INCLUDED

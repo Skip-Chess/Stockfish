@@ -1,5 +1,6 @@
 #ifndef _STREAM_FIX_H_
 #define _STREAM_FIX_H_
+#if __cplusplus
 #include <condition_variable>
 #include <iostream>
 #include <mutex>
@@ -83,4 +84,5 @@ extern FakeStream fakeout;
 extern FakeStream fakein;
 extern std::string fakeendl;
 
+#endif
 #endif

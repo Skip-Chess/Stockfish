@@ -18,6 +18,7 @@
 
 #ifndef THREAD_WIN32_OSX_H_INCLUDED
 #define THREAD_WIN32_OSX_H_INCLUDED
+#if __cplusplus
 
 #include <thread>
 
@@ -71,4 +72,5 @@ using NativeThread = std::thread;
 
 #endif
 
+#endif
 #endif // #ifndef THREAD_WIN32_OSX_H_INCLUDED

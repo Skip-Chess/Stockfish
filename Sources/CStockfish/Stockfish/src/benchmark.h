@@ -18,6 +18,7 @@
 
 #ifndef BENCHMARK_H_INCLUDED
 #define BENCHMARK_H_INCLUDED
+#if __cplusplus
 
 #include <iosfwd>
 #include <string>
@@ -31,4 +32,5 @@ std::vector<std::string> setup_bench(const Position&, std::istream&);
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef BENCHMARK_H_INCLUDED

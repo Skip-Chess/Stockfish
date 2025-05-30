@@ -18,6 +18,7 @@
 
 #ifndef TBPROBE_H
 #define TBPROBE_H
+#if __cplusplus
 
 #include <ostream>
 
@@ -73,4 +74,5 @@ inline std::ostream& operator<<(std::ostream& os, const ProbeState v) {
 
 } // namespace Stockfish::Tablebases
 
+#endif
 #endif

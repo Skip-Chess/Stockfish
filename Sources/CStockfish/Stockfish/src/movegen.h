@@ -18,6 +18,7 @@
 
 #ifndef MOVEGEN_H_INCLUDED
 #define MOVEGEN_H_INCLUDED
+#if __cplusplus
 
 #include <algorithm>
 
@@ -74,4 +75,5 @@ private:
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef MOVEGEN_H_INCLUDED

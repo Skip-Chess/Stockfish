@@ -20,6 +20,7 @@
 
 #ifndef NNUE_ARCHITECTURE_H_INCLUDED
 #define NNUE_ARCHITECTURE_H_INCLUDED
+#if __cplusplus
 
 #include <memory>
 
@@ -134,4 +135,5 @@ struct Network
 
 }  // namespace Stockfish::Eval::NNUE
 
+#endif
 #endif // #ifndef NNUE_ARCHITECTURE_H_INCLUDED

@@ -18,6 +18,7 @@
 
 #ifndef TYPES_H_INCLUDED
 #define TYPES_H_INCLUDED
+#if __cplusplus
 
 /// When compiling with provided Makefile (e.g. for Linux and OSX), configuration
 /// is done automatically. To get started type 'make help'.
@@ -486,6 +487,7 @@ constexpr Key make_key(uint64_t seed) {
 
 } // namespace Stockfish
 
+#endif
 #endif // #ifndef TYPES_H_INCLUDED
 
 #include "tune.h" // Global visibility to tuning setup

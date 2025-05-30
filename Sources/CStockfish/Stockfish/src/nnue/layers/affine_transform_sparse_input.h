@@ -20,6 +20,7 @@
 
 #ifndef NNUE_LAYERS_AFFINE_TRANSFORM_SPARSE_INPUT_H_INCLUDED
 #define NNUE_LAYERS_AFFINE_TRANSFORM_SPARSE_INPUT_H_INCLUDED
+#if __cplusplus
 
 #include <iostream>
 #include <algorithm>
@@ -283,4 +284,5 @@ namespace Stockfish::Eval::NNUE::Layers {
 
 }  // namespace Stockfish::Eval::NNUE::Layers
 
+#endif
 #endif // #ifndef NNUE_LAYERS_AFFINE_TRANSFORM_SPARSE_INPUT_H_INCLUDED

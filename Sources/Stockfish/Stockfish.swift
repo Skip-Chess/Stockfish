@@ -6,10 +6,6 @@ public struct StockfishEngine {
         
     }
     
-    public static var engineInfo: String {
-        Stockfish.engine_info().description
-    }
-
     public static func stop() {
 
     }
@@ -28,7 +24,7 @@ public struct StockfishEngine {
 
         Task {
             while Task.isCancelled == false {
-                if let line = stockfish_stdout_read(1) {
+                if let line = stockfish_stdout_read(0) {
                     if let str = String(validatingCString: line) {
                         if str != "" && str != "\n" {
                             continuation?.yield(str)

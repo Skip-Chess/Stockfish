@@ -20,6 +20,7 @@
 
 #ifndef NNUE_COMMON_H_INCLUDED
 #define NNUE_COMMON_H_INCLUDED
+#if __cplusplus
 
 #include <cstring>
 #include <iostream>
@@ -238,4 +239,5 @@ namespace Stockfish::Eval::NNUE {
 
 }  // namespace Stockfish::Eval::NNUE
 
+#endif
 #endif // #ifndef NNUE_COMMON_H_INCLUDED

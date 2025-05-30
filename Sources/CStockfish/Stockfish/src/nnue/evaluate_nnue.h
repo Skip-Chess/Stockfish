@@ -20,6 +20,7 @@
 
 #ifndef NNUE_EVALUATE_NNUE_H_INCLUDED
 #define NNUE_EVALUATE_NNUE_H_INCLUDED
+#if __cplusplus
 
 #include "nnue_feature_transformer.h"
 
@@ -65,4 +66,5 @@ namespace Stockfish::Eval::NNUE {
 
 }  // namespace Stockfish::Eval::NNUE
 
+#endif
 #endif // #ifndef NNUE_EVALUATE_NNUE_H_INCLUDED

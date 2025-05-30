@@ -19,6 +19,7 @@
 
 #ifndef PSQT_H_INCLUDED
 #define PSQT_H_INCLUDED
+#if __cplusplus
 
 
 #include "types.h"
@@ -34,5 +35,5 @@ void init();
 
 } // namespace Stockfish::PSQT
 
-
+#endif
 #endif // PSQT_H_INCLUDED
