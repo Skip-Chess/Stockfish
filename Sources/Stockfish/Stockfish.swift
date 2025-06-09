@@ -11,9 +11,10 @@ public struct StockfishEngine {
     }
 
     public static func start() -> AsyncStream<String> {
-        stockfish_init()
+        var readTask: Task<(), any Error>? = nil
         Task {
             stockfish_main()
+            readTask?.cancel()
         }
 
         var continuation: AsyncStream<String>.Continuation?
@@ -22,17 +23,16 @@ public struct StockfishEngine {
             continuation = subscriber
         }
 
-        Task {
+        readTask = Task {
             while Task.isCancelled == false {
-                if let line = stockfish_stdout_read(0) {
+                if let line = stockfish_stdout_read() {
                     if let str = String(validatingCString: line) {
-                        if str != "" && str != "\n" {
-                            continuation?.yield(str)
-                        }
+                        continuation?.yield(str)
                     }
                 }
-                //try await Task.sleep(nanoseconds: 10_000_000)
+                try await Task.sleep(nanoseconds: 10_000)
             }
+            continuation?.finish()
         }
 
         return stream

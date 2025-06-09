@@ -7,24 +7,18 @@
 #include <queue>
 #include <sstream>
 
-#ifdef __EMSCRIPTEN__
-#include <emscripten.h>
-#include <emscripten/threading.h>
-#endif
-
 template <typename T>
 inline std::string stringify(const T& input) {
     std::ostringstream output;  // from   www  .ja va  2s  . com
     output << input;
-    return std::string(output.str());
+    return output.str();
 }
 
 class FakeStream {
    public:
     template <typename T>
     FakeStream& operator<<(const T& val) {
-        if (closed)
-            return *this;
+        if (closed) return *this;
         std::lock_guard<std::mutex> lock(mutex_guard);
         string_queue.push(stringify(val));
         mutex_signal.notify_one();
@@ -32,46 +26,29 @@ class FakeStream {
     };
     template <typename T>
     FakeStream& operator>>(T& val) {
-        if (closed)
-            return *this;
+        if (closed) return *this;
         std::unique_lock<std::mutex> lock(mutex_guard);
-#ifdef __EMSCRIPTEN__
-        if (emscripten_is_main_runtime_thread()) {
-            lock.unlock();
-            while (true) {
-                lock = std::unique_lock<std::mutex>(mutex_guard);
-                if (!string_queue.empty() || closed)
-                    break;
-                lock.unlock();
-                emscripten_sleep(10);
-            }
-        } else {
-            mutex_signal.wait(
-                lock, [this] { return !string_queue.empty() || closed; });
-        }
-#else
         mutex_signal.wait(lock,
                           [this] { return !string_queue.empty() || closed; });
-#endif
-        if (closed)
-            return *this;
+        if (closed) return *this;
         val = string_queue.front();
         string_queue.pop();
         return *this;
     };
 
-    bool try_get_line(std::string&);
+    bool try_get_line(std::string& val);
 
-    void open();
     void close();
+    void reopen();
     bool is_closed();
 
     std::streambuf* rdbuf();
-    std::streambuf* rdbuf(std::streambuf*);
+    std::streambuf* rdbuf(std::streambuf* __sb);
 
    private:
     bool closed = false;
     std::queue<std::string> string_queue;
+    //std::string line;
     std::mutex mutex_guard;
     std::condition_variable mutex_signal;
 };
@@ -80,8 +57,13 @@ namespace std {
 bool getline(FakeStream& is, std::string& str);
 }  // namespace std
 
+// #define endl fakeendl
+// #define cout fakeout
+// #define cin fakein
+
 extern FakeStream fakeout;
 extern FakeStream fakein;
+extern FakeStream fakeerr;
 extern std::string fakeendl;
 
 #endif

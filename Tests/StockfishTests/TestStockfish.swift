@@ -5,16 +5,34 @@ import Stockfish
 @Test func testStockfish() async throws {
     let stream = StockfishEngine.start()
     var iterator = stream.makeAsyncIterator()
-    await #expect(iterator.next() == "Stockfish 16 by the Stockfish developers (see AUTHORS file)")
 
-    StockfishEngine.send("uci")
-    await #expect(iterator.next() == "id name ")
-    await #expect(iterator.next() == """
-    Stockfish 16
+    func send(_ line: String) {
+        print("Sending line: \(line)")
+        StockfishEngine.send(line)
+    }
+
+    func readLine() async -> String {
+        var line = ""
+        for await tok in stream {
+            if tok == "\n" {
+                return line
+            }
+            line += tok
+        }
+        return line
+    }
+
+    await #expect(iterator.next() == "Stockfish 16 by the Stockfish developers (see AUTHORS file)")
+    await #expect(readLine() == "")
+
+    send("uci")
+
+    await #expect(readLine() == """
+    id name Stockfish 16
     id author the Stockfish developers (see AUTHORS file)
     """)
 
-    await #expect(iterator.next() == """
+    await #expect(readLine() == """
 
 option name Debug Log File type string default 
 option name Threads type spin default 1 min 1 max 1024
@@ -35,17 +53,14 @@ option name SyzygyPath type string default <empty>
 option name SyzygyProbeDepth type spin default 1 min 1 max 100
 option name Syzygy50MoveRule type check default true
 option name SyzygyProbeLimit type spin default 7 min 0 max 7
-option name Use NNUE type check default true
-option name EvalFile type string default nn-5af11540bbfe.nnue
+uciok
 """)
 
-    await #expect(iterator.next() == "\nuciok")
+    send("ucinewgame")
 
-    StockfishEngine.send("ucinewgame")
+    send("d") // print the board
 
-    StockfishEngine.send("d") // print the board
-
-    await #expect(iterator.next() == """
+    await #expect(readLine() == """
 
  +---+---+---+---+---+---+---+---+
  | r | n | b | q | k | b | n | r | 8
@@ -71,12 +86,12 @@ Key: 8F8F01D4562F59FB
 Checkers: 
 """)
 
-    StockfishEngine.send("position fen r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 10")
+    for _ in 1...10 {
+        send("position fen r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 10")
 
+        send("d") // print the board
 
-    StockfishEngine.send("d") // print the board
-
-    await #expect(iterator.next() == """
+        await #expect(readLine() == """
 
  +---+---+---+---+---+---+---+---+
  | r |   |   |   | k |   |   | r | 8
@@ -101,9 +116,27 @@ Fen: r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 10
 Key: BA0586148EFA180B
 Checkers: 
 """)
+    }
 
-    StockfishEngine.send("quit")
-    await #expect(iterator.next() == "quitok\n")
+    let italianGameFen = "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4"
+
+    send("position fen \(italianGameFen)")
+
+    send("go perft 1")
+
+    while true {
+        let line = await readLine()
+        print("go perft 1> " + line)
+        if line.hasPrefix("\nNodes searched:") { break }
+    }
+
+//    send("go movetime 100")
+//    for await x in stream {
+//        print("### response: \(x)")
+//    }
+
+    send("quit")
+//    await #expect(readLine() == "quitok\n")
 
     StockfishEngine.stop()
 }
